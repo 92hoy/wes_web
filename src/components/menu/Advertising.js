@@ -1,4 +1,6 @@
 import React from "react";
+import { withStyles } from "@material-ui/styles";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
@@ -15,7 +17,7 @@ import image4 from "../../static/image/img4.jpeg";
 import image5 from "../../static/image/img5.jpeg";
 import image6 from "../../static/image/img6.jpeg";
 import image7 from "../../static/image/img7.jpeg";
-const useStyles = makeStyles((theme) => ({
+const useStyles = (theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
@@ -24,11 +26,7 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: theme.palette.background.paper,
-  },
-  imageList: {
-    // width: 500,
-    // height: 450,
+    // backgroundColor: theme.palette.background.paper,
   },
   ImageListItem: {
     // margin: "1rem",
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: "rgba(255, 255, 255, 0.54)",
   },
-}));
+});
 
 const itemData = [
   {
@@ -83,42 +81,51 @@ const itemData = [
     cols: 2,
   },
 ];
-export default function Advertising() {
-  // export default function Advertising() {
-  const classes = useStyles();
-  function openModal() {
-    console.log(333);
+class Advertising extends React.Component {
+  openModal(e, title) {
+    console.log("clicked", title);
   }
+  render() {
+    // export default function Advertising() {
+    // const { classes } = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <Modal name="hello" />
-      <ImageList rowHeight={180} className={classes.imageList}>
-        <ImageListItem key="Subheader" cols={2} style={{ height: "auto" }}>
-          <ListSubheader component="div">Advertising</ListSubheader>
-        </ImageListItem>
-        {itemData.map((item) => (
-          <ImageListItem
-            key={item.img}
-            className={classes.ImageListItem}
-            onClick={openModal(this, item.title)}
-          >
-            <img src={item.img} alt={item.title} />
-            <ImageListItemBar
-              title={item.title}
-              // subtitle={<span>by: {item.author}</span>}
-              // actionIcon={
-              //   <IconButton
-              //     aria-label={`info about ${item.title}`}
-              //     className={classes.icon}
-              //   >
-              //     <InfoIcon />
-              //   </IconButton>
-              // }
-            />
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <Modal name="hello" />
+        <ImageList rowHeight={180} className={classes.imageList}>
+          <ImageListItem key="Subheader" cols={2} style={{ height: "auto" }}>
+            <ListSubheader component="div">Advertising</ListSubheader>
           </ImageListItem>
-        ))}
-      </ImageList>
-    </div>
-  );
+          {itemData.map((item) => (
+            <ImageListItem key={item.img} className={classes.ImageListItem}>
+              <img
+                src={item.img}
+                alt={item.title}
+                onClick={(e) => {
+                  this.openModal(e, item.title);
+                }}
+              />
+              <ImageListItemBar
+                title={item.title}
+                // subtitle={<span>by: {item.author}</span>}
+                // actionIcon={
+                //   <IconButton
+                //     aria-label={`info about ${item.title}`}
+                //     className={classes.icon}
+                //   >
+                //     <InfoIcon />
+                //   </IconButton>
+                // }
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+      </div>
+    );
+  }
 }
+Advertising.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+export default withStyles(useStyles)(Advertising);
