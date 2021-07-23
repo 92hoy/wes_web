@@ -1,0 +1,36 @@
+.image-gallery {
+  width: 40%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: auto;
+  min-height: 60vh;
+  max-height: 80vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 100vh;
+}
+.image-gallery-thumbnails {
+  overflow: hidden;
+  padding: 5px 0;
+}
+.image-gallery-thumbnails-container {
+  transform: translate3d(0px, 0px, 0px);
+  transition: all 450ms ease-out 0s;
+}
+.image-gallery-thumbnail-image {
+  vertical-align: middle;
+  width: 100%;
+  line-height: 0;
+}
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-height: calc(100vh - 80px);
+}
