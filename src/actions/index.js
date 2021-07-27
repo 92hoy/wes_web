@@ -9,3 +9,25 @@ export function fetchMoim() {
     payload: request,
   };
 }
+
+export function getMenu() {
+  const request = axios.get("/api/getMenu/");
+  return {
+    type: FETCH_MOIM,
+    payload: request,
+  };
+}
+export function getCategory() {
+  const request = axios.get("/api/getCategory/");
+  return {
+    type: FETCH_MOIM,
+    payload: request,
+  };
+}
+export function getImage() {
+  const request = axios.get("/api/getImage/");
+  return {
+    type: FETCH_MOIM,
+    payload: request,
+  };
+}

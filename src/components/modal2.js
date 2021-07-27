@@ -276,7 +276,7 @@ class NewModal extends React.Component {
           onClick={this.handleOpen}
           className={classes.buttoncolor}
         >
-          View
+          view
         </Button>
         <Modal
           aria-labelledby="transition-modal-title"
