@@ -8,7 +8,7 @@ import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
-import Modal from "../modal";
+import Modal from "../modal2";
 
 import image1 from "../../static/image/img1.jpeg";
 import image2 from "../../static/image/img2.jpeg";
@@ -83,7 +83,7 @@ const itemData = [
 ];
 class Advertising extends React.Component {
   openModal(e, title) {
-    console.log("clicked", title);
+    Modal(title);
   }
   render() {
     // export default function Advertising() {
@@ -92,31 +92,24 @@ class Advertising extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Modal name="hello" />
         <ImageList rowHeight={180} className={classes.imageList}>
           <ImageListItem key="Subheader" cols={2} style={{ height: "auto" }}>
             <ListSubheader component="div">Advertising</ListSubheader>
           </ImageListItem>
           {itemData.map((item) => (
             <ImageListItem key={item.img} className={classes.ImageListItem}>
-              <img
-                src={item.img}
-                alt={item.title}
-                onClick={(e) => {
-                  this.openModal(e, item.title);
-                }}
-              />
+              <img src={item.img} alt={item.title} />
               <ImageListItemBar
                 title={item.title}
-                // subtitle={<span>by: {item.author}</span>}
-                // actionIcon={
-                //   <IconButton
-                //     aria-label={`info about ${item.title}`}
-                //     className={classes.icon}
-                //   >
-                //     <InfoIcon />
-                //   </IconButton>
-                // }
+                actionIcon={
+                  <IconButton
+                    aria-label={`info about ${item.title}`}
+                    className={classes.icon}
+                  >
+                    {/* <InfoIcon /> */}
+                    <Modal name={item.title} />
+                  </IconButton>
+                }
               />
             </ImageListItem>
           ))}

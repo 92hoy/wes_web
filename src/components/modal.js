@@ -103,7 +103,7 @@ export default function TransitionsModal(props) {
   };
 
   return (
-    <div>
+    <div onClick={handleOpen}>
       <button type="button" onClick={handleOpen}>
         react-transition-group
       </button>

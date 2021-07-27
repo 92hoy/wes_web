@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
-    height: "100%",
   },
   imageList: {
     flexWrap: "nowrap",
