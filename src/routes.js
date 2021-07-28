@@ -8,6 +8,7 @@ import Advertising from "../src/components/menu/Advertising";
 import Personal from "../src/components/menu/Personal";
 import Contact from "../src/components/menu/Contact";
 import Main from "../src/components/Main";
+import ImageUpload from "./components/menu/ImageUpload";
 
 // export default function Routes() {
 //   return (
@@ -32,6 +33,7 @@ const Routes = () => {
       <Route exact path="/Advertising" component={Advertising} />
       <Route exact path="/Personal" component={Personal} />
       <Route exact path="/Contact" component={Contact} />
+      <Route exact path="/AdminImageUpload" component={ImageUpload} />
     </Switch>
   );
 };

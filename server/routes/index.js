@@ -29,6 +29,7 @@ router.get("/", function (req, res) {
 router.get("/getCategory", function (req, res) {
   res.send({ menu: "helllllllllllll" });
 });
+
 router.get("/getMenu", (req, res) => {
   console.log("getMenu");
   connection.query(
@@ -42,4 +43,18 @@ router.get("/getMenu", (req, res) => {
     }
   );
 });
+
+router.post("/upload", (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    return res.json({
+      success: true,
+      image: res.req.file.path,
+      fileName: res.req.file.filename,
+    });
+  });
+});
+
 module.exports = router;
